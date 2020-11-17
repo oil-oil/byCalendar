@@ -1,0 +1,45 @@
+<view class="margin-top-xl">
+
+  <view class="margin text-gray">活动日历</view>
+  <view class="bg-white margin shadow radius" >
+    <view class="flex align-center justify-between">
+      <view class="text-lg text-bold padding ">
+        <text>{{year}}年</text> 
+        <text class="margin-left-sm">{{month+1}}月</text>
+        
+      </view>
+      <view class="text-center padding-sm padding-tb-xs bg-red margin-right-sm radius" bindtap="initDate">今日</view>
+    </view>
+    <view class="flex justify-center bg-gray" >
+      <view class="flex-sub padding-sm " wx:for="{{calendar.weekArray}}">{{item}}</view>
+    </view>
+
+    <swiper style="height:{{swiperHeight === ''?'40vh':swiperHeight+'px'}};transition:all 0.3s" bindchange="calendarChange" circular='true' current="{{current}}" >
+      <swiper-item wx:for="{{3}}">
+          <view class="flex flex-wrap" id='swiper'>
+        <view style="width:14.2%;" wx:for="{{calendar.array}}" bindtap="{{item === ''?'':'chooseDate'}}" data-index="{{item.date}}" >
+          <view class="padding text-center {{item.today?'solids line-red text-bold':''}} {{choose.year === year && choose.month === month && item.date === choose.date?'solids':''}} ">
+          {{item === ''?'':item.date+1}}
+        </view>
+        </view>
+      </view>
+      </swiper-item>
+      
+    </swiper>
+    
+
+    <!-- <view class="padding solids-top">
+      <view class="flex align-center">
+    <view class="cuIcon-title text-red text-lg"></view>
+    <view class="margin-left-sm">
+      <view> 周五举办红十字会全体大会</view>
+      <view class="text-sm text-gray">下午两点</view>
+    </view>
+      </view>
+      <view class="flex justify-center text-red align-center margin-top text-bold">查看所有日程</view>
+    </view> -->
+    
+  
+  </view>
+
+</view>
